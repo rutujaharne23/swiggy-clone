@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { Outlet} from 'react-router-dom';
 import './App.css';
+import { Header } from './components/headers';
+import { UserContext } from './utils/userContext';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "Rutuja Harne"
+    };
+    setUserName(data.name)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <Header />
+        <Outlet />
+    </UserContext.Provider>
+    </>
   );
 }
 
