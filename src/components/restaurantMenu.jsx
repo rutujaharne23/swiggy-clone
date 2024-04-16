@@ -12,7 +12,7 @@ export const RestaurantMenu = () => {
     
     if(restaurantInfo.length === 0) return <Skeleton />;
 
-    const { name, avgRatingString, totalRatingsString, costForTwoMessage, cuisines } = restaurantInfo?.cards?.[2]?.card?.card?.info || {};
+    const { name, avgRatingString, totalRatingsString, costForTwoMessage } = restaurantInfo?.cards?.[2]?.card?.card?.info || {};
 
     const categories = restaurantInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         item => item.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
